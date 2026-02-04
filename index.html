@@ -3,31 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>My Pinterest Page</title>
+  <!-- Link to external CSS -->
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Basic styling for container and button */
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
-    .container { text-align: center; padding: 50px; }
-    .btn { background: #ff6f00; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 20px; }
-
-    /* Modal overlay */
-    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); }
-
-    /* Modal content box */
-    .modal-content { background-color: #fff; margin: 10% auto; padding: 20px; border-radius: 10px; width: 80%; max-width: 800px; display: flex; gap: 20px; position: relative; }
-
-    /* Left image */
-    .modal-content img { width: 50%; border-radius: 10px; }
-
-    /* Right details */
-    .details { width: 50%; text-align: left; }
-    .details h2 { margin-top: 0; }
-    .details p { margin: 10px 0; font-size: 16px; }
-
-    /* Close button */
-    .close { position: absolute; top: 10px; right: 20px; font-size: 30px; font-weight: bold; color: #333; cursor: pointer; }
-    .close:hover { color: #ff6f00; }
-  </style>
 </head>
 <body>
 
@@ -55,8 +32,8 @@
     </div>
   </div>
 
+  <!-- JavaScript to handle modal -->
   <script>
-    // Open modal
     const modal = document.getElementById("myModal");
     const openBtn = document.getElementById("openModal");
     const closeBtn = document.getElementById("closeModal");
@@ -66,12 +43,10 @@
       modal.style.display = "block";
     }
 
-    // Close modal
     closeBtn.onclick = function() {
       modal.style.display = "none";
     }
 
-    // Close modal if clicked outside content
     window.onclick = function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
