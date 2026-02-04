@@ -3,61 +3,150 @@
 <head>
   <meta charset="UTF-8">
   <title>My Pinterest Page</title>
-  <!-- Link to external CSS -->
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      text-align: center;
+      padding: 50px 20px;
+      background-color: #f2f2f2;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px 0;
+      background: #ff5722;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .recommendations {
+      max-width: 800px;
+      margin: 50px auto;
+      text-align: left;
+      padding: 0 20px;
+    }
+
+    .item {
+      border-bottom: 1px solid #ccc;
+      padding: 15px 0;
+      cursor: pointer;
+    }
+
+    .item h3 {
+      margin: 0;
+      color: #333;
+    }
+
+    /* Modal styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      max-width: 600px;
+      display: flex;
+      gap: 20px;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .modal-content img {
+      max-width: 200px;
+      border-radius: 5px;
+    }
+
+    .details h2 {
+      margin-top: 0;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #000;
+    }
+  </style>
 </head>
 <body>
 
+  <!-- Main Section -->
   <div class="container">
     <h1>Welcome ✨</h1>
     <p>I share useful tools & resources I personally recommend.</p>
-
-    <!-- Button to open modal -->
-    <a href="#" class="btn" id="openModal">Visit My Recommendation</a>
+    <a href="#recommendations" class="btn">Visit My Recommendations</a>
   </div>
 
-  <!-- Modal -->
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close" id="closeModal">&times;</span>
-      <!-- Left: Poster -->
-      <img src="images/fanta-ad.png.png" alt="Fanta Ad">
+  <!-- Recommendations Section -->
+  <div id="recommendations" class="recommendations">
+    <h1>My Recommendations</h1>
 
-      <!-- Right: Details -->
+    <!-- Item 1: Fanta Poster -->
+    <div class="item" id="fantaItem">
+      <h3>No. 1 - Fanta Poster</h3>
+      <p>Click to see the design sample.</p>
+    </div>
+
+  </div>
+
+  <!-- Modal for Fanta -->
+  <div id="fantaModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeFanta">&times;</span>
+      <img src="images/fanta-ad.png.png" alt="Fanta Ad">
       <div class="details">
         <h2>Poster Design Sample</h2>
         <p>This is a creative poster design example I made for Fanta. I can design similar ads or posters for your brand.</p>
         <p><strong>Starting Price:</strong> $10</p>
-        <a href="#" class="btn">Order Now</a>
+        <a href="mailto:fabiha1310@gmail.com?subject=Order%20Poster" class="btn">Order Now</a>
       </div>
     </div>
   </div>
 
-  <!-- JavaScript to handle modal -->
+  <!-- JavaScript -->
   <script>
-    const modal = document.getElementById("myModal");
-    const openBtn = document.getElementById("openModal");
-    const closeBtn = document.getElementById("closeModal");
+    // Get modal elements
+    const fantaModal = document.getElementById("fantaModal");
+    const fantaItem = document.getElementById("fantaItem");
+    const closeFanta = document.getElementById("closeFanta");
 
-    openBtn.onclick = function(e) {
-      e.preventDefault();
-      modal.style.display = "block";
+    // Open modal when item clicked
+    fantaItem.onclick = function() {
+      fantaModal.style.display = "block";
     }
 
-    closeBtn.onclick = function() {
-      modal.style.display = "none";
+    // Close modal
+    closeFanta.onclick = function() {
+      fantaModal.style.display = "none";
     }
 
+    // Close if click outside modal
     window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
+      if (event.target == fantaModal) {
+        fantaModal.style.display = "none";
       }
     }
   </script>
 
 </body>
 </html>
-
-
-
-
