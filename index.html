@@ -4,6 +4,32 @@
   <meta charset="UTF-8">
   <title>My Pinterest Page</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Basic styling for container and button */
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
+    .container { text-align: center; padding: 50px; }
+    .btn { background: #ff6f00; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 20px; }
+
+    /* Modal overlay */
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto;
+             background-color: rgba(0,0,0,0.6); }
+
+    /* Modal content box */
+    .modal-content { background-color: #fff; margin: 10% auto; padding: 20px; border-radius: 10px;
+                     width: 80%; max-width: 800px; display: flex; gap: 20px; }
+
+    /* Left image */
+    .modal-content img { width: 50%; border-radius: 10px; }
+
+    /* Right details */
+    .details { width: 50%; text-align: left; }
+    .details h2 { margin-top: 0; }
+    .details p { margin: 10px 0; font-size: 16px; }
+
+    /* Close button */
+    .close { position: absolute; top: 20px; right: 30px; font-size: 30px; font-weight: bold; color: white; cursor: pointer; }
+    .close:hover { color: #ff6f00; }
+  </style>
 </head>
 <body>
 
@@ -11,12 +37,49 @@
     <h1>Welcome ✨</h1>
     <p>I share useful tools & resources I personally recommend.</p>
 
-    <a href="https://example.com" target="_blank" class="btn">
-      Visit My Recommendation
-    </a>
+    <!-- Button to open modal -->
+    <a href="#" class="btn" id="openModal">Visit My Recommendation</a>
   </div>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+    <span class="close" id="closeModal">&times;</span>
+    <div class="modal-content">
+      <!-- Left: Poster -->
+      <img src="images/fanta-ad.png" alt="Fanta poster design sample">
+      <!-- Right: Details -->
+      <div class="details">
+        <h2>Poster Design Sample</h2>
+        <p>This is a creative poster design example I made for Fanta. I can design similar ads or posters for your brand.</p>
+        <p><strong>Starting Price:</strong> $10</p>
+        <a href="#" class="btn">Order Now</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Open modal
+    const modal = document.getElementById("myModal");
+    const openBtn = document.getElementById("openModal");
+    const closeBtn = document.getElementById("closeModal");
+
+    openBtn.onclick = function(e) {
+      e.preventDefault();
+      modal.style.display = "block";
+    }
+
+    // Close modal
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // Close modal if clicked outside content
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 
 </body>
 </html>
-
-
